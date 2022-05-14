@@ -25,8 +25,7 @@ class TikTokVideo:
         caption='',
         video='',
     ):
-        self.driver = driver or uc.Chrome(
-            driver_executable_path='chromedriver.exe', options=options)
+        self.driver = driver or uc.Chrome(options=options)
         self.caption = caption
         self.video = video
 
