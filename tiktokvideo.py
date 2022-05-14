@@ -33,7 +33,7 @@ class TikTokVideo:
         self._cookies_file = PATH/'tmp'/'cookies.json'
 
         self.driver.maximize_window()
-        self.driver.get('https://www.tiktok.com')
+        self.driver.get('https://www.tiktok.com/about/contact?lang=en')
         self.load_cookies()
 
         # TODO: Add method for logging in via 2Captcha
@@ -81,9 +81,9 @@ class TikTokVideo:
 
         post = WebDriverWait(
             self.driver, 60).until(
-            EC.visibility_of_element_located(
+            EC.presence_of_element_located(
                 (By.XPATH,
-                 '//button[@class="tiktok-btn-pc tiktok-btn-pc-large tiktok-btn-pc-primary tiktok-btn-pc-disabled"]')))
+                 '//div[contains(@class, "btn-post")]/button')))
 
         caption.click()
         caption.send_keys(self.caption)
@@ -92,7 +92,7 @@ class TikTokVideo:
 
         WebDriverWait(
             self.driver, 3600).until(
-            lambda _: 'tiktok-btn-pc-disabled' not in post.get_attribute('class'))  # Wait for post button to enable.
+            lambda _: post.is_enabled())  # Wait for post button to enable.
 
         post.click()
 
@@ -100,7 +100,8 @@ class TikTokVideo:
 
         self.driver.quit()
 
+
 # NOTE: Below is an example of use. Please note that class must be instantiated AND used inside __main__.
-# if __name__ == '__main__':
-#     cool = TikTokVideo(video=r'D:\Test\Directory\File.mp4', caption='Test')
-#     cool.upload()
+if __name__ == '__main__':
+    cool = TikTokVideo(video=r'D:\Test\Directory\File.mp4', caption='Test')
+    cool.upload()
