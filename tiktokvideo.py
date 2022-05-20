@@ -22,10 +22,12 @@ class TikTokVideo:
 
     def __init__(
         self, driver=None,
+        account='',
         caption='',
         video='',
     ):
         self.driver = driver or uc.Chrome(options=options)
+        self.account = account
         self.caption = caption
         self.video = video
 
