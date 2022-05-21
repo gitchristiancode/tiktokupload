@@ -1,0 +1,10 @@
+Loop through every video
+The first video would match to the first account
+Second to Second
+
+On the writeout of the newly created video, upload created video to tiktok for first account
+Finish for all text files
+Loop to next account
+
+You have two folders, one for new stories and one for old.
+Program goes through all of new stories

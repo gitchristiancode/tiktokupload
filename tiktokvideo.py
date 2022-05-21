@@ -11,6 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 
 import undetected_chromedriver as uc
+import os
 
 PATH = Path(__file__).parent
 
@@ -31,7 +32,7 @@ class TikTokVideo:
         self.caption = caption
         self.video = video
 
-        self._cookies_file = PATH/'tmp'/'cookies.json'
+        self._cookies_file = PATH/'data'/self.account/'.json'
 
         self.driver.maximize_window()
         self.driver.get('https://www.tiktok.com/about/contact?lang=en')
@@ -104,5 +105,11 @@ class TikTokVideo:
 
 # NOTE: Below is an example of use. Please note that class must be instantiated AND used inside __main__.
 if __name__ == '__main__':
-    cool = TikTokVideo(video=r'D:\Test\Directory\File.mp4', caption='Test')
-    cool.upload()
+    currentFolder = os.listdir(r"tiktokupload\uploadNow")
+    length = currentFolder.len()
+    with open('data/signsIns.txt','r') as :
+        
+    for x in range(length):
+         cool = TikTokVideo(account="a", video=currentFolder[x], caption='Test')
+         cool.upload()
+
